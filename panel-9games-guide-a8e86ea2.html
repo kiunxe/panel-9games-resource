@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
+    <title>九游 · 游戏心态与生活节奏</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background-color: #f6fafc;
+            color: #1d2c35;
+            line-height: 1.6;
+            padding: 0 1rem 3rem;
+        }
+
+        .page {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* --- hero 区 --- */
+        .hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 4rem 0.5rem 3rem;
+            background: linear-gradient(145deg, #d9f0f5 0%, #e8f6fa 100%);
+            border-radius: 2rem 2rem 1rem 1rem;
+            margin-top: 1.5rem;
+            box-shadow: 0 8px 20px rgba(0, 90, 100, 0.06);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -30%;
+            right: -10%;
+            width: 250px;
+            height: 250px;
+            background: radial-gradient(circle, #5bc0c0 0%, transparent 70%);
+            opacity: 0.15;
+            pointer-events: none;
+        }
+
+        .hero h1 {
+            font-size: 2.6rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            color: #095a63;
+            margin-bottom: 0.75rem;
+            line-height: 1.2;
+            text-shadow: 0 2px 4px rgba(0,40,45,0.04);
+        }
+
+        .hero-sub {
+            font-size: 1.1rem;
+            color: #2a5863;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            font-weight: 380;
+        }
+
+        .hero .cta-tag {
+            display: inline-block;
+            background: #eef9fb;
+            border: 1px solid #b6d9de;
+            color: #095a63;
+            padding: 0.5rem 1.6rem;
+            border-radius: 40px;
+            font-size: 0.95rem;
+            backdrop-filter: blur(2px);
+        }
+
+        /* --- 网格卡片 --- */
+        .section-title {
+            font-size: 1.7rem;
+            font-weight: 500;
+            margin: 3rem 0 1.8rem;
+            color: #10434b;
+            border-left: 6px solid #44b3b3;
+            padding-left: 1rem;
+        }
+
+        .grid-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .card {
+            background: white;
+            padding: 1.8rem 1.3rem 1.5rem;
+            border-radius: 20px;
+            box-shadow: 0 6px 18px rgba(40, 90, 95, 0.06);
+            transition: transform 0.2s ease, box-shadow 0.25s;
+            border: 1px solid #e3f0f3;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 28px rgba(30, 80, 85, 0.08);
+            border-color: #b1d7dd;
+        }
+
+        .card h3 {
+            font-size: 1.35rem;
+            font-weight: 500;
+            color: #0c5c66;
+            margin-bottom: 0.6rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .card h3 span {
+            background: #c7e6ea;
+            color: #085059;
+            font-size: 1rem;
+            border-radius: 30px;
+            padding: 0.1rem 0.7rem;
+            font-weight: 400;
+        }
+
+        .card p {
+            color: #2f4a4f;
+            font-size: 0.95rem;
+        }
+
+        /* --- 说明区 / 句子内链 --- */
+        .intro-block {
+            background: #ffffffdd;
+            backdrop-filter: blur(2px);
+            padding: 2rem 2rem;
+            border-radius: 28px;
+            margin: 2.5rem 0 1.8rem;
+            box-shadow: 0 4px 16px rgba(50, 100, 105, 0.04);
+            border: 1px solid #d2e7eb;
+        }
+
+        .intro-block p {
+            margin-bottom: 1.2rem;
+            font-size: 1rem;
+        }
+
+        .intro-block a {
+            color: #0f707b;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 2px solid #74c4c4;
+            padding-bottom: 1px;
+            transition: color 0.2s, border-color 0.2s;
+        }
+
+        .intro-block a:hover {
+            color: #064650;
+            border-bottom-color: #398a8a;
+        }
+
+        .highlight-link {
+            background: #e1f3f6;
+            padding: 0.2rem 0.3rem;
+            border-radius: 6px;
+        }
+
+        /* --- FAQ 摘要 卡片风格 --- */
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.2rem;
+            margin: 1.5rem 0 2.5rem;
+        }
+
+        .faq-item {
+            background: #f2fafc;
+            border-radius: 24px;
+            padding: 1.4rem 1.4rem 1rem;
+            border-left: 4px solid #5bbfbf;
+        }
+
+        .faq-item strong {
+            display: block;
+            font-size: 1.05rem;
+            color: #083b42;
+            margin-bottom: 0.3rem;
+        }
+
+        .faq-item p {
+            font-size: 0.9rem;
+            color: #1d4a52;
+        }
+
+        /* --- 底部链接 --- */
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.2rem 2rem;
+            border-top: 1px solid #cde1e5;
+            padding: 2rem 0.5rem 0;
+            margin-top: 2rem;
+            font-size: 0.9rem;
+        }
+
+        .footer-links a {
+            color: #1a6a73;
+            text-decoration: none;
+            border-bottom: 1px dotted #8bbfc7;
+        }
+
+        .footer-links a:hover {
+            color: #043b42;
+            border-bottom: 1px solid #265f6b;
+        }
+
+        .footer-meta {
+            text-align: center;
+            font-size: 0.8rem;
+            color: #4a777e;
+            margin-top: 2rem;
+        }
+
+        /* --- 移动端微调 --- */
+        @media (max-width: 600px) {
+            .hero h1 {
+                font-size: 1.9rem;
+            }
+            .hero {
+                padding: 2.8rem 0.5rem 2rem;
+            }
+            .section-title {
+                font-size: 1.4rem;
+            }
+            .card {
+                padding: 1.5rem 1rem;
+            }
+            .intro-block {
+                padding: 1.5rem 1rem;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .grid-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+    <!-- hero 区 -->
+    <header class="hero">
+        <h1>九游 · 慢慢来</h1>
+        <p class="hero-sub">在快速变化的日常里，给自己一个平稳的落脚点。<br>不追进度，不赶节点。</p>
+        <span class="cta-tag">习惯 丨 节奏 丨 持续</span>
+    </header>
+
+    <!-- 优势区：网格卡片  -->
+    <h2 class="section-title">日常手感</h2>
+    <div class="grid-cards">
+        <div class="card">
+            <h3><span>01</span> 不设限</h3>
+            <p>尝试新的方式，不必一次完美。每次打开<br><a href="https://panel-9games.com.cn" style="color:#1a7a7a;text-decoration:none;font-weight:400;border-bottom:1px solid #84c9c9;">九游</a>，都是一次温和的接触。</p>
+        </div>
+        <div class="card">
+            <h3><span>02</span> 轻量</h3>
+            <p>界面干净，操作直观。不堆积、不催促，像随手翻一本喜欢的杂志。</p>
+        </div>
+        <div class="card">
+            <h3><span>03</span> 灵活</h3>
+            <p>适合碎片时间，也适合安静的长段沉浸。自己决定停留多久。</p>
+        </div>
+        <div class="card">
+            <h3><span>04</span> 低门槛</h3>
+            <p>不需要学习成本，不制造焦虑。每个人都能找到自己的步调。</p>
+        </div>
+    </div>
+
+    <!-- 说明区 + 自然嵌入链接 -->
+    <div class="intro-block">
+        <p>有时候我们需要的不是更多选择，而是一个能让自己感到舒服的地方。<strong>九游</strong>的设计初衷，就是为日常留出一点空白。无论你是想短暂放松，还是想重新整理思路，它都能成为那个安静的背景。</p>
+        <p>关于「九游」本身，其实更像一种状态：保持好奇，但不紧绷。就像生活中那些小而确定的习惯——每天走同一条路，却能发现不同的树叶。如果你也认同这样的想法，不妨从<a href="https://panel-9games.com.cn">九游</a>开始，把它当作一个属于自己的小站。</p>
+        <p>我们不谈宏大目标，只在意每次打开页面时，是否顺手、自然。没有多余推送，没有排行榜，只有最基本的呈现。</p>
+    </div>
+
+    <!-- 场景/特点 混合区块 -->
+    <h2 class="section-title">几个可能的时刻</h2>
+    <div style="display:flex; flex-wrap:wrap; gap:1rem; margin-bottom:2rem;">
+        <div style="flex:1; min-width:180px; background:#e4f2f5; border-radius:36px; padding:1.2rem 1.5rem;">
+            ☕ 午休间隙 &nbsp;·&nbsp; 五分钟
+        </div>
+        <div style="flex:1; min-width:180px; background:#dceef1; border-radius:36px; padding:1.2rem 1.5rem;">
+            🌿 周末午后 &nbsp;·&nbsp; 没有计划
+        </div>
+        <div style="flex:1; min-width:180px; background:#d5eaed; border-radius:36px; padding:1.2rem 1.5rem;">
+            📖 等车排队 &nbsp;·&nbsp; 翻两页
+        </div>
+    </div>
+
+    <!-- FAQ 摘要 -->
+    <h2 class="section-title" style="margin-top:1.8rem;">常见想法</h2>
+    <div class="faq-grid">
+        <div class="faq-item">
+            <strong>需要注册吗？</strong>
+            <p>没有强制注册。直接使用即可，不同功能也不要求绑定信息。</p>
+        </div>
+        <div class="faq-item">
+            <strong>内容会更新吗？</strong>
+            <p>会自然迭代，但不会频繁改动。保持稳定和熟悉感。</p>
+        </div>
+        <div class="faq-item">
+            <strong>适合长期使用？</strong>
+            <p>如果你喜欢简单、低负担的体验，可以把它当作一个常驻页面。</p>
+        </div>
+        <div class="faq-item">
+            <strong>与其他平台的关系？</strong>
+            <p><a href="https://panel-9games.com.cn" style="color:#1a7a7a;text-decoration:none;border-bottom:1px solid #7ac1c1;">九游</a>是独立页面，不依赖其他账号，独立存在。</p>
+        </div>
+    </div>
+
+    <!-- 底部链接 -->
+    <div class="footer-links">
+        <a href="https://panel-9games.com.cn">九游</a>
+        <span style="color:#54838a;">·</span>
+        <a href="#">关于此页</a>
+        <a href="#">偶尔更新</a>
+        <a href="#">反馈想法</a>
+    </div>
+    <div class="footer-meta">
+        设计方向 · 蓝绿 · 网格卡片 · 2025
+    </div>
+</div>
+</body>
+</html>
